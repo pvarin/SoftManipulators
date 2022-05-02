@@ -1,5 +1,5 @@
 import numpy as np
-from SmoothManipulatorBase import SmoothManipulatorBase
+from SoftManipulatorBase import SoftManipulatorBase
 
 
 def _cinc(theta):
@@ -34,7 +34,11 @@ def _cinc(theta):
         return res
 
 
-class PiecewiseConstantCurvaturePath(SmoothManipulatorBase):
+class PiecewiseConstantCurvaturePath2D(SoftManipulatorBase):
+
+    @property
+    def ndim(self):
+        return 2
 
     def pos_relative_to_parent(self, curvature, length_along_segment):
         angle = curvature * length_along_segment
@@ -42,5 +46,5 @@ class PiecewiseConstantCurvaturePath(SmoothManipulatorBase):
         y = length_along_segment * _cinc(angle)
         return np.stack([x, y])
 
-    def angle_relative_to_parent(self, curvature, length_along_segment):
+    def orientation_relative_to_parent(self, curvature, length_along_segment):
         return curvature * length_along_segment

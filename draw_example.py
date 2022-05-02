@@ -1,5 +1,5 @@
 import numpy as np
-from PiecewiseConstantCurvatureModel import PiecewiseConstantCurvaturePath
+from PiecewiseConstantCurvatureModel import PiecewiseConstantCurvaturePath2D
 import matplotlib.pyplot as plt
 from draw_manipulator import draw_manipulator, default_colormap
 from contact_point_utils import make_evenly_spaced_contact_points, get_taper_fn
@@ -23,7 +23,7 @@ bottom_contacts = make_evenly_spaced_contact_points(0,
 contact_points = np.concatenate([top_contacts, bottom_contacts])
 
 # Build the model
-model = PiecewiseConstantCurvaturePath(lengths, contact_points=contact_points)
+model = PiecewiseConstantCurvaturePath2D(lengths, contact_points=contact_points)
 
 # Plot the model in a sequence of poses
 n_states = 3

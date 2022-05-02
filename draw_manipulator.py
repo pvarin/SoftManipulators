@@ -13,8 +13,8 @@ def default_colormap():
 def draw_manipulator(model, q, **kwargs):
     spine = []
     for s in np.linspace(0, model.total_length):
-        pos, _ = model.forwardKin(q, s)
-        spine.append(pos)
+        transform = model.forwardKin(q, s)
+        spine.append(transform.pos)
     spine = np.stack(spine)
     plt.plot(spine[..., 0], spine[..., 1], **kwargs)
 
